@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <nav style="text-align: center; padding: 10px;">
+  <a href="Avery's.resume.html">Resume</a>
+  <span> | </span>
+  <a href="Connections(2).html">Connections</a>
+  <span> | </span>
+  <a href="index.html">Scratch</a>
+</nav>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop Connections ✨</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:      #fff0f8;
+  --bg2:     #ffe4f2;
+  --surface: #ffffff;
+  --border:  #f0c0dd;
+  --txt:     #3a1f35;
+  --muted:   #b580a0;
+  --shadow:  #e8a0cc44;
+  --c0fg:#ff5fa0; --c0bg:#fff0f7; --c0bd:#ffb3d4;
+  --c1fg:#7c5cbf; --c1bg:#f5f0ff; --c1bd:#c9b8f0;
+  --c2fg:#ff8c42; --c2bg:#fff5ee; --c2bd:#ffcc99;
+  --c3fg:#30b080; --c3bg:#edfaf4; --c3bd:#90ddc0;
+  --font-head: 'Nunito', sans-serif;
+  --font-body: 'Nunito Sans', sans-serif;
+  --radius: 18px;
+}
+
+body{
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 15%, #ffd6ee 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, #e8d6ff 0%, transparent 40%);
+  color: var(--txt);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem 1rem 3rem;
+}
+
+body::before{
+  content: '✦ ˚ ✦ ˚ ✦ ˚ ✦ ˚ ✦ ˚ ✦';
+  position: fixed;
+  top: .4rem;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: .7rem;
+  color: #f0a0cc66;
+  letter-spacing: .5em;
+  pointer-events: none;
+}
+
+header{
+  text-align: center;
+  margin-bottom: 1.4rem;
+  width: 100%;
+  max-width: 580px;
+}
+
+.sparkle-row{
+  font-size: 1.3rem;
+  margin-bottom: .2rem;
+  letter-spacing: .3em;
+}
+
+h1{
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 7vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--txt);
+  letter-spacing: -.01em;
+  position: relative;
+  display: inline-block;
+}
+
+h1 .pop  { color: #ff5fa0; }
+h1 .conn { color: #7c5cbf; }
+h1 .ects { color: #ff8c42; }
+h1 .ions { color: #30b080; }
+
+.subtitle{
+  margin-top: .5rem;
+  font-size: .8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.lives-row{
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-bottom: 1rem;
+  font-size: .72rem;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.heart{
+  font-size: 1.15rem;
+  transition: transform .2s, opacity .3s;
+  filter: drop-shadow(0 1px 2px #ff5fa055);
+}
+.heart.lost{
+  opacity: .2;
+  transform: scale(.8);
+  filter: none;
+}
+
+.solved-area{
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.solved-banner{
+  border-radius: var(--radius);
+  padding: .75rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  animation: bounceIn .4s cubic-bezier(.34,1.6,.64,1) both;
+  box-shadow: 0 3px 0 0 rgba(0,0,0,.06);
+}
+
+@keyframes bounceIn{
+  from{opacity:0;transform:scale(.88) translateY(6px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+
+.solved-banner .cat-label{
+  font-family: var(--font-head);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.solved-banner .cat-words{
+  font-size: .84rem;
+  font-weight: 600;
+  opacity: .85;
+}
+
+.grid{
+  width: 100%;
+  max-width: 580px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+
+.card{
+  aspect-ratio: 1 / 1.1;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  box-shadow: 0 3px 0 0 var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: .5rem .4rem .5rem;
+  font-family: var(--font-head);
+  font-size: clamp(.6rem, 2.1vw, .8rem);
+  font-weight: 800;
+  color: var(--txt);
+  cursor: pointer;
+  transition: transform .13s cubic-bezier(.34,1.56,.64,1), box-shadow .13s, background .12s, border-color .12s;
+  user-select: none;
+  line-height: 1.25;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  gap: .3rem;
+}
+
+.card:hover:not(.selected):not(.gone){
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 0 var(--border);
+  background: #fff8fc;
+}
+
+.card.selected{
+  background: #ffeaf5;
+  border-color: #ff5fa0;
+  box-shadow: 0 3px 0 0 #ff5fa0, 0 0 0 3px #ff5fa022;
+  transform: translateY(-3px) scale(1.03);
+}
+
+.card.shake{ animation: shake .42s ease; }
+
+@keyframes shake{
+  0%,100%{transform:translateX(0) scale(1.03)}
+  20%{transform:translateX(-6px) scale(1.03)}
+  40%{transform:translateX(6px) scale(1.03)}
+  60%{transform:translateX(-4px) scale(1.03)}
+  80%{transform:translateX(4px) scale(1.03)}
+}
+
+.card.gone{
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(.75) rotate(5deg);
+  transition: opacity .25s, transform .25s;
+}
+
+.dot-row{
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  min-height: 9px;
+}
+
+.dot{
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+
+.controls{
+  margin-top: 1.1rem;
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 580px;
+}
+
+.btn{
+  padding: .52rem 1.25rem;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-family: var(--font-head);
+  font-size: .78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all .13s;
+  box-shadow: 0 2px 0 0 var(--border);
+}
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 0 var(--border);
+  color: var(--txt);
+}
+.btn:active{ transform: translateY(1px); box-shadow: none; }
+
+.btn-submit{
+  background: linear-gradient(135deg, #ff5fa0, #bf5fe0);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 3px 0 0 #c040a0;
+}
+.btn-submit:hover{
+  background: linear-gradient(135deg, #ff79b0, #cc6fe8);
+  box-shadow: 0 4px 0 0 #c040a0;
+  color: #fff;
+}
+.btn-submit:active{ box-shadow: none; }
+.btn-submit:disabled{
+  opacity: .35;
+  cursor: not-allowed;
+  background: #e0d0e8;
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-hint{
+  background: #fff8ee;
+  border-color: #ffcc88;
+  color: #cc7700;
+  box-shadow: 0 2px 0 0 #ffcc88;
+}
+.btn-hint:hover{ background: #fff2dd; color: #aa5500; box-shadow: 0 3px 0 0 #ffcc88; }
+.btn-hint:disabled{ opacity: .3; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.one-away{
+  font-size: .74rem;
+  color: #ff8c42;
+  font-weight: 700;
+  margin-top: .6rem;
+  min-height: 1.1rem;
+  text-align: center;
+  font-family: var(--font-head);
+}
+
+.toast{
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-70px) scale(.9);
+  background: var(--txt);
+  color: #fff;
+  padding: .55rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--font-head);
+  font-size: .82rem;
+  font-weight: 800;
+  pointer-events: none;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), opacity .3s;
+  opacity: 0;
+  white-space: nowrap;
+  z-index: 99;
+  box-shadow: 0 4px 20px #3a1f3544;
+}
+.toast.show{
+  transform: translateX(-50%) translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal-backdrop{
+  position: fixed;
+  inset: 0;
+  background: #ffd6ee99;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.modal-backdrop.show{ opacity: 1; pointer-events: all; }
+
+.modal{
+  background: #fff;
+  border: 2.5px solid var(--border);
+  border-radius: 28px;
+  padding: 2.2rem 2rem;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 8px 0 0 #f0c0dd, 0 20px 60px #e8a0cc44;
+  transform: scale(.88) translateY(10px);
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.modal-backdrop.show .modal{ transform: scale(1) translateY(0); }
+
+.modal-emoji{ font-size: 3.5rem; line-height: 1; }
+
+.modal-title{
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--txt);
+  line-height: 1.1;
+}
+
+.modal-body{
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.modal .btn-submit{ padding: .65rem 2rem; font-size: .9rem; }
+
+.card::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 80% 20%, #ff5fa015 0%, transparent 50%);
+  transition: opacity .2s;
+}
+.card.selected::after{ opacity: 1; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sparkle-row">🌸 ✨ 💫 ✨ 🌸</div>
+  <h1><span class="pop">Pop</span><span class="conn">conn</span><span class="ects">ect</span><span class="ions">ions</span></h1>
+  <div class="subtitle">Group 4 things that share something in common ˚ ✦</div>
+</header>
+
+<div class="lives-row">
+  <span>Mistakes left:</span>
+  <span class="heart" id="h0">🩷</span>
+  <span class="heart" id="h1">🩷</span>
+  <span class="heart" id="h2">🩷</span>
+  <span class="heart" id="h3">🩷</span>
+</div>
+
+<div class="solved-area" id="solvedArea"></div>
+<div class="grid" id="grid"></div>
+<div class="one-away" id="oneAway"></div>
+
+<div class="controls">
+  <button class="btn" onclick="shuffleGrid()">🔀 Shuffle</button>
+  <button class="btn" onclick="deselectAll()">✕ Deselect</button>
+  <button class="btn btn-hint" id="hintBtn" onclick="useHint()">💡 Hint (2 left)</button>
+  <button class="btn btn-submit" id="submitBtn" onclick="submitGuess()" disabled>Submit ✦</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <div class="modal-emoji" id="modalEmoji">🏆</div>
+    <div class="modal-title" id="modalTitle">You nailed it!</div>
+    <div class="modal-body" id="modalBody"></div>
+    <button class="btn btn-submit" onclick="resetGame()">Play again 🌸</button>
+  </div>
+</div>
+
+<script>
+const PUZZLES = [
+  {
+    categories: [
+      { label: "💅 Taylor Swift Eras", color: 0, words: ["Fearless", "Reputation", "Folklore", "Midnights"] },
+      { label: "🤌 Definitely Not a Cult", color: 1, words: ["CrossFit", "SoulCycle", "Scientology", "Peloton"] },
+      { label: "🫠 Ways to Say 'I Watch Too Much TV'", color: 2, words: ["Parasocial", "Main character", "No spoilers", "Canon event"] },
+      { label: "👴 Things Millennials Killed", color: 3, words: ["Applebee's", "Napkins", "Golf", "Diamonds"] }
+    ]
+  },
+  {
+    categories: [
+      { label: "🧠 ChatGPT Said This Confidently", color: 0, words: ["Abraham Lincoln", "Pluto is a planet", "Sunscreen causes cancer", "Great Wall from space"] },
+      { label: "🐸 Phrases That Aged Terribly", color: 1, words: ["YOLO", "On fleek", "Cash me outside", "That's so fetch"] },
+      { label: "🚩 Actual Red Flags", color: 2, words: ["No bio", "Guy Fieri", "Comic Sans", "Reply-all email"] },
+      { label: "📱 Apps Your Parents Just Discovered", color: 3, words: ["TikTok", "Venmo", "Discord", "BeReal"] }
+    ]
+  },
+  {
+    categories: [
+      { label: "🧃 Every Wellness Brand Ever", color: 0, words: ["Matcha", "Adaptogens", "Collagen", "Ashwagandha"] },
+      { label: "😤 Meaning 'I Haven't Watched It'", color: 1, words: ["Overhyped", "Not for me", "Problematic", "I've heard mixed things"] },
+      { label: "🎤 One-Name Icons", color: 2, words: ["Beyoncé", "Adele", "Rihanna", "Madonna"] },
+      { label: "🛋️ Signs You've Given Up", color: 3, words: ["DoorDash breakfast", "Couch indent", "Pajama Zoom", "Emotional support water bottle"] }
+    ]
+  }
+];
+
+const COLORS = [
+  { fg:'#ff5fa0', bg:'#fff0f7', bd:'#ffb3d4' },
+  { fg:'#7c5cbf', bg:'#f5f0ff', bd:'#c9b8f0' },
+  { fg:'#ff8c42', bg:'#fff5ee', bd:'#ffcc99' },
+  { fg:'#30b080', bg:'#edfaf4', bd:'#90ddc0' },
+];
+
+let puzzle, cards, selected, mistakes, solved, gameOver, hintsUsed, dotsVisible;
+
+function buildPuzzle() {
+  puzzle = PUZZLES[Math.floor(Math.random() * PUZZLES.length)];
+  cards = [];
+  puzzle.categories.forEach((cat, ci) => {
+    cat.words.forEach(w => cards.push({ word: w, cat: ci }));
+  });
+  shuffle(cards);
+  selected = new Set(); mistakes = 0; solved = new Set();
+  gameOver = false; hintsUsed = 0; dotsVisible = false;
+  updateLives(); renderGrid();
+  document.getElementById('solvedArea').innerHTML = '';
+  document.getElementById('oneAway').textContent = '';
+  document.getElementById('modalBackdrop').classList.remove('show');
+}
+
+function resetGame() {
+  document.getElementById('modalBackdrop').classList.remove('show');
+  buildPuzzle();
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  const catColor = {};
+  puzzle.categories.forEach((cat, ci) => { catColor[ci] = COLORS[cat.color].fg; });
+  const selCatCounts = {};
+  if (dotsVisible) {
+    selected.forEach(i => {
+      const cat = cards[i].cat;
+      selCatCounts[cat] = (selCatCounts[cat] || 0) + 1;
+    });
+  }
+  cards.forEach((c, i) => {
+    if (solved.has(c.cat)) return;
+    const isSel = selected.has(i);
+    const el = document.createElement('div');
+    el.className = 'card' + (isSel ? ' selected' : '');
+    el.dataset.idx = i;
+    const wordSpan = document.createElement('span');
+    wordSpan.textContent = c.word;
+    el.appendChild(wordSpan);
+    const dotRow = document.createElement('div');
+    dotRow.className = 'dot-row';
+    if (dotsVisible && isSel) {
+      const count = selCatCounts[c.cat] || 0;
+      for (let d = 0; d < count; d++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.style.background = catColor[c.cat];
+        dot.style.boxShadow = `0 0 4px ${catColor[c.cat]}`;
+        dotRow.appendChild(dot);
+      }
+      for (let d = count; d < 4; d++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.style.background = '#e0d0e8';
+        dotRow.appendChild(dot);
+      }
+    }
+    el.appendChild(dotRow);
+    el.addEventListener('click', () => toggleCard(i));
+    grid.appendChild(el);
+  });
+  updateSubmit();
+  updateHintBtn();
+}
+
+function updateHintBtn() {
+  const btn = document.getElementById('hintBtn');
+  const left = 2 - hintsUsed;
+  btn.textContent = `💡 Hint (${left} left)`;
+  btn.disabled = gameOver || hintsUsed >= 2 || selected.size < 2 || mistakes >= 3;
+}
+
+function toggleCard(idx) {
+  if (gameOver) return;
+  if (selected.has(idx)) { selected.delete(idx); }
+  else { if (selected.size >= 4) return; selected.add(idx); }
+  dotsVisible = false; renderGrid();
+  document.getElementById('oneAway').textContent = '';
+}
+
+function useHint() {
+  if (gameOver || hintsUsed >= 2 || selected.size < 2 || mistakes >= 3) return;
+  hintsUsed++; mistakes++; updateLives();
+  dotsVisible = true; renderGrid();
+  const cats = [...selected].map(i => cards[i].cat);
+  const allMatch = new Set(cats).size === 1;
+  toast(allMatch ? '💚 All matching! Go go go!' : '💡 Dots show who belongs together — swap the odd one!');
+  document.getElementById('oneAway').textContent = '✦ Colored dots = same group. Find the odd one out!';
+}
+
+function deselectAll() { selected.clear(); dotsVisible = false; renderGrid(); }
+
+function shuffleGrid() {
+  const unsolved = cards.filter(c => !solved.has(c.cat));
+  shuffle(unsolved);
+  cards = [...cards.filter(c => solved.has(c.cat)), ...unsolved];
+  selected.clear(); dotsVisible = false; renderGrid();
+}
+
+function updateSubmit() {
+  document.getElementById('submitBtn').disabled = selected.size !== 4;
+}
+
+function updateLives() {
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById('h' + i);
+    el.textContent = i < (4 - mistakes) ? '🩷' : '🖤';
+    el.classList.toggle('lost', i >= (4 - mistakes));
+  }
+}
+
+function submitGuess() {
+  if (selected.size !== 4 || gameOver) return;
+  const selArr = [...selected];
+  const cats = selArr.map(i => cards[i].cat);
+  const catSet = new Set(cats);
+  if (catSet.size === 1) {
+    const catIdx = cats[0];
+    solved.add(catIdx); addSolvedBanner(catIdx);
+    document.querySelectorAll('.card.selected').forEach(el => el.classList.add('gone'));
+    dotsVisible = false; selected.clear();
+    setTimeout(() => {
+      renderGrid();
+      if (solved.size === 4) { setTimeout(() => showEndModal(true), 400); }
+      else { toast(randomWin()); }
+    }, 280);
+    document.getElementById('oneAway').textContent = '';
+  } else {
+    mistakes++; updateLives();
+    let maxMatch = 0;
+    [0,1,2,3].forEach(ci => { const m = cats.filter(c => c === ci).length; if (m > maxMatch) maxMatch = m; });
+    if (maxMatch === 3) document.getElementById('oneAway').textContent = '🔥 One away…!';
+    document.querySelectorAll('.card.selected').forEach(el => {
+      el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+    });
+    if (mistakes >= 4) { setTimeout(() => showEndModal(false), 600); } else { toast(randomLoss()); }
+    dotsVisible = false; selected.clear();
+    setTimeout(() => renderGrid(), 500);
+  }
+}
+
+function addSolvedBanner(catIdx) {
+  const cat = puzzle.categories[catIdx];
+  const col = COLORS[cat.color];
+  const el = document.createElement('div');
+  el.className = 'solved-banner';
+  el.style.background = col.bg;
+  el.style.border = `2px solid ${col.bd}`;
+  el.style.boxShadow = `0 3px 0 0 ${col.bd}`;
+  el.innerHTML = `
+    <div class="cat-label" style="color:${col.fg}">${cat.label}</div>
+    <div class="cat-words" style="color:${col.fg}">${cat.words.join(' · ')}</div>
+  `;
+  document.getElementById('solvedArea').appendChild(el);
+}
+
+function showEndModal(won) {
+  gameOver = true;
+  document.getElementById('modalEmoji').textContent = won ? '🏆' : '🫠';
+  document.getElementById('modalTitle').textContent = won ? 'You nailed it! 🌸' : 'Game over, bestie';
+  document.getElementById('modalBody').textContent = won
+    ? `Flawless. You're basically a pop culture deity. Chronically online, but make it cute.`
+    : `You made ${mistakes} mistakes. The categories are revealed above. No judgment. Okay maybe a little. 🫶`;
+  document.getElementById('modalBackdrop').classList.add('show');
+  if (!won) {
+    [0,1,2,3].forEach(ci => { if (!solved.has(ci)) { solved.add(ci); addSolvedBanner(ci); } });
+    setTimeout(() => renderGrid(), 100);
+  }
+}
+
+const WIN_MSGS  = ["Slay! 💅","Very demure, very correct ✨","Main character energy 🌸","No notes 🎤","You ate and left no crumbs","Understood the assignment 📚","Pop culture queen 👑","That's so right it's giving everything 💫"];
+const LOSE_MSGS = ["That's a no from me, dawg 😬","Bestie… no 🫣","The audacity! The nerve!","Not the vibe 🙈","We don't talk about that guess","I- okay. Try again 🩷","That's giving wrong-answer energy 💀","Oof. Rough. You've got this though 🌸"];
+
+function randomWin()  { return WIN_MSGS[Math.floor(Math.random()*WIN_MSGS.length)]; }
+function randomLoss() { return LOSE_MSGS[Math.floor(Math.random()*LOSE_MSGS.length)]; }
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+buildPuzzle();
+</script>
+</body>
+</html>
